@@ -23,7 +23,7 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
   def add_field_for_fulltext
     @beautiful_attributes = myattributes.dup
     @fulltext_field = []
-    myattributes.each{ |attr|
+    myattributes.each{ |attr| 
       a,t = attr.split(':')
       if ['richtext', 'wysiwyg'].include?(t) then
         # _typetext = {bbcode|html|text|wiki|textile|markdown}
@@ -47,9 +47,9 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
         a += "_id"
       end
 
-      inject_into_file("app/models/#{model}.rb", ":avatar, :#{a},", :after => "def self.permitted_attributes\n    return ")
+      inject_into_file("app/models/#{model}.rb", ":#{a},", :after => "def self.permitted_attributes\n    return ")
     }
-    
+    puts "Hello there!"
   end
 
   def generate_views
