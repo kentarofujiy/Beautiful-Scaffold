@@ -47,10 +47,9 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
         a += "_id"
       end
 
-      inject_into_file("app/models/#{model}.rb", ":#{a},", :after => "def self.permitted_attributes\n    return ")
-     
+      inject_into_file("app/models/#{model}.rb", ":avatar, :#{a},", :after => "def self.permitted_attributes\n    return ")
     }
-     inject_into_file("app/models/#{model}.rb", ":avatar,", :after => "def self.permitted_attributes\n    return ")
+    
   end
 
   def generate_views
