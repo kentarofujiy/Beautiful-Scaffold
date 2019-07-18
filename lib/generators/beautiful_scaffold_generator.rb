@@ -19,7 +19,7 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
   class_option :namespace, default: nil
   class_option :donttouchgem, default: nil
   class_option :mountable_engine, default: nil
-  class_option :withavatar, default: nil
+  class_option :withavatar, type: :boolean, default: true
 
   def install_gems
     if options[:donttouchgem].blank? then
@@ -153,7 +153,9 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
 
   def add_to_model
     # Add relation
-    inject_into_file("app/models/#{model}.rb", "\n  has_one_attached :avatar", :after => "ApplicationRecord")
+    if options['withavatar'] == true
+      inject_into_file("app/models/#{model}.rb", "\n  has_one_attached :avatar", :after => "ApplicationRecord")
+    end
     myattributes.each{ |attr|
       a,t = attr.split(':')
       if ['references', 'reference'].include?(t) then
