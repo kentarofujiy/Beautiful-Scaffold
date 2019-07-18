@@ -12,6 +12,7 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
 
   class_option :namespace, :default => nil
   class_option :donttouchgem, :default => nil
+  class_option :withavatar, :default => nil
 
   def install_gems
     if options[:donttouchgem].blank? then
@@ -47,6 +48,9 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
       end
 
       inject_into_file("app/models/#{model}.rb", ":#{a},", :after => "def self.permitted_attributes\n    return ")
+      if options[:withavatar] then
+        inject_into_file("app/models/#{model}.rb", ":avatar,", :after => "def self.permitted_attributes\n    return ")
+      end
     }
   end
 
