@@ -144,7 +144,7 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
   end
 
   def self.permitted_attributes
-    return ' + attributes_without_type.map{ |attr| ":#{attr}" }.join(",") + '
+    return ' + ':avatar' + attributes_without_type.map{ |attr| ":#{attr}" }.join(",") + '
   end', :after => "class #{model_camelize} < ApplicationRecord")
 
     copy_file  "app/models/pdf_report.rb", "app/models/pdf_report.rb"

@@ -49,7 +49,7 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
 
       inject_into_file("app/models/#{model}.rb", ":#{a},", :after => "def self.permitted_attributes\n    return ")
     }
-    puts "Hello there!"
+  
   end
 
   def generate_views
