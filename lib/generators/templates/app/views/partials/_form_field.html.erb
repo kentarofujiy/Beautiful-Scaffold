@@ -1,3 +1,8 @@
+ <div class="form-group">
+   <%%= f.file_field :avatar %>
+   
+  </div>
+
 <%- attributes.each do |attribute| -%>
   <%- if @beautiful_attributes.include?(attribute.name + ':wysiwyg') then -%>
     <div class="form-group">
