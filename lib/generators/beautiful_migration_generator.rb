@@ -48,7 +48,7 @@ class BeautifulMigrationGenerator < Rails::Generators::Base
       end
 
       inject_into_file("app/models/#{model}.rb", ":#{a},", :after => "def self.permitted_attributes\n    return ")
-      if options[:withavatar] then
+      if not options[:withavatar].blank? then
         inject_into_file("app/models/#{model}.rb", ":avatar,", :after => "def self.permitted_attributes\n    return ")
       end
     }
