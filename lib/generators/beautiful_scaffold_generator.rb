@@ -153,6 +153,7 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
 
   def add_to_model
     # Add relation
+    inject_into_file("app/models/#{model}.rb", "\n  has_one_attached :avatar", :after => "ApplicationRecord")
     myattributes.each{ |attr|
       a,t = attr.split(':')
       if ['references', 'reference'].include?(t) then
