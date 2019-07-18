@@ -1,6 +1,7 @@
 <%- attributes.each do |attribute| -%>
   <%- if @beautiful_attributes.include?(attribute.name + ':wysiwyg') then -%>
     <div class="form-group">
+      <h1>kentaro</h1>
       <%%= f.label :<%= attribute.name %>, <%= i18n_t_a(singular_table_name, attribute.name) %>.capitalize, :class => "control-label" %>
       <%%= f.text_area :<%= attribute.name %>, :class => "wysiwyg-editor form-control" %>
     </div>
