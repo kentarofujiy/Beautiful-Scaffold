@@ -88,6 +88,8 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
                         "bootstrap-colorpicker.js",
                         "a-wysihtml5-0.3.0.min.js",
                         "bootstrap-wysihtml5.js",
+                        "crop.js",
+                        "angular.js",
                         "fixed_menu.js"
                        ]
 

@@ -188,8 +188,6 @@ module BeautifulScaffoldCommonMethods
       'prawn' => '2.1.0',
       'prawn-table' => '0.2.2',
       'sanitize' => nil,
-      'twitter-bootstrap-rails' => '3.2.2',
-      'font-awesome-rails' => '4.7.0.2',
       'chardinjs-rails' => nil,
       'momentjs-rails' => '>= 2.9.0',
       'bootstrap3-datetimepicker-rails' => '~> 4.17.47',
