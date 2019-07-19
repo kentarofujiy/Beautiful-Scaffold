@@ -55,7 +55,6 @@
         <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control" %><span class="input-group-addon"><i style="background-color: rgb(0, 0, 0)"></i></span>
       </div>
     </div>
-  <%- else -%>
     <%- elsif @beautiful_attributes.include?(attribute.name + ':cropimg') then -%>
     <div class="form-group">
       <%%= f.label :<%= attribute.name %>, <%= i18n_t_a(singular_table_name, attribute.name) %>.capitalize, :class => "control-label" %>
