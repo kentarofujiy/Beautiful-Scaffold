@@ -89,6 +89,7 @@ class BeautifulScaffoldGenerator < Rails::Generators::Base
                         "a-wysihtml5-0.3.0.min.js",
                         "bootstrap-wysihtml5.js",
                         "crop.js",
+                        "finecrop.js",
                         "angular.js",
                         "fixed_menu.js"
                        ]
