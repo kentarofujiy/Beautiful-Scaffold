@@ -7,7 +7,9 @@
       <%%= t((@<%= singular_table_name %>.<%= attribute.name %> ? "yes".to_sym : "no".to_sym)) %>
     <%- elsif @beautiful_attributes.include?(attribute.name + ':references') then -%>
       <%%= (@<%= singular_table_name %>.<%= attribute.name %>.nil? ? "" : @<%= singular_table_name %>.<%= attribute.name %>.caption) %>
-    <%- else -%>
+          <%- if @beautiful_attributes.include?(attribute.name + ':cropimg') then -%>
+          <img src="<%%= @<%= singular_table_name %>.cropimg %>"
+      <%- else -%>
       <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
     <%- end -%>
   </p>

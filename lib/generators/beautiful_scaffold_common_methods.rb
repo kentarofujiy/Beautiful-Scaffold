@@ -142,6 +142,9 @@ module BeautifulScaffoldCommonMethods
       elsif t == 'color' then
         newt = 'string'
       end
+      elsif t == 'cropimg' then
+        newt = 'text'
+      end
 
       newmyattributes << [a, newt].join(':')
     }

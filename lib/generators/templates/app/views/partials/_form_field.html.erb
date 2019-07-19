@@ -56,6 +56,60 @@
       </div>
     </div>
   <%- else -%>
+    <%- elsif @beautiful_attributes.include?(attribute.name + ':cropimg') then -%>
+    <div class="form-group">
+      <%%= f.label :<%= attribute.name %>, <%= i18n_t_a(singular_table_name, attribute.name) %>.capitalize, :class => "control-label" %>
+       <input id="<%= model %>_cropimg" name="<%= model %>[cropimg]" style="display:none">
+       </br>
+       <input type="file" id="upphoto" style="display:none;">
+        <label for="upphoto">
+            <div class="inputLabel btn btn-default">
+
+               Hiperbanner
+
+            </div>
+        </label>
+        <div class="cropHolder">
+    <div id="cropWrapper">
+        <img id="inputImage" src="images/face.jpg">
+    </div>
+    <div class="cropInputs">
+        <div class="inputtools">
+            <p>
+                <span>Movimento Horizontal</span>
+            </p>
+            <input type="range" class="cropRange" name="xmove" id="xmove" min="0" value="0">
+        </div>
+        <div class="inputtools">
+            <p>
+                      <span>Movimento Vertical</span>
+            </p>
+            <input type="range" class="cropRange" name="ymove" id="ymove" min="0" value="0">
+        </div>
+        <br>
+        <button class="cropButtons" id="zplus">
+            <img src="<%#= asset_path 'add.png' %>">
+        </button>
+        <button class="cropButtons" id="zminus">
+            <img src="<%#= asset_path 'minus.png' %>">
+        </button>
+        <br>
+        <button id="cropSubmit" class="btn btn-primary btn-sm">Enviar</button>
+        <button id="closeCrop" class="btn btn-danger btn-sm">Cancelar</button>
+    </div>
+</div>
+  </div>
+<script>
+    $("#upphoto").finecrop({
+        viewHeight: 950,
+        cropWidth: 720,
+        cropHeight: 480,
+        cropInput: 'inputImage',
+        cropOutput: '<%= model %>_cropimg',
+        zoomValue: 50
+    });
+</script>
+  <%- else -%>
     <div class="form-group">
       <%%= f.label :<%= attribute.name %>, <%= i18n_t_a(singular_table_name, attribute.name) %>.capitalize, :class => "control-label" %>
       <%%= f.<%= attribute.field_type %> :<%= attribute.name %><%= ', :rows => 5' if attribute.field_type == :text_area %>, :class => "form-control" %>
