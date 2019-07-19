@@ -141,7 +141,6 @@ module BeautifulScaffoldCommonMethods
         newt = 'integer:index'
       elsif t == 'color' then
         newt = 'string'
-      end
       elsif t == 'cropimg' then
         newt = 'text'
       end
