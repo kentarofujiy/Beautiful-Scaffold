@@ -110,9 +110,7 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
 
     generate("cancan:ability")
     
-    inside Rails.root do
-      run "rake db:migrate"
-    end
+ 
 
     inject_into_file("app/models/ability.rb", "
       if not user.nil? then
@@ -141,4 +139,7 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
     # Access controlled by CanCan (in beautiful_scaffold)
     inject_into_file("app/controllers/application_controller.rb", "#", :before => "before_action :authenticate_#{model}!, :except => [:dashboard]")
   end
+     inside Rails.root do
+      run "rake db:migrate"
+    end
 end
