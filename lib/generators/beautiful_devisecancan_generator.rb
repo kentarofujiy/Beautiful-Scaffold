@@ -10,7 +10,7 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
   def install_devise
     view_path = "app/views/"
 
-    gem("devise", "2.1.0")
+    gem("devise")
 
     inside Rails.root do
       run "bundle install"
