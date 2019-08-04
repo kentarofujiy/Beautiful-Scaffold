@@ -7,6 +7,18 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
 
   argument :model, :type => :string, :desc => "Name of model (downcase singular)"
   
+  def install_devisetoken
+    gem("devise_token_authenticatable")
+     inside Rails.root do
+      run "bundle install"
+      
+    end
+      inside Rails.root do
+      run "rails g devise_token_authenticatable:initializer"
+      
+    end
+  end
+  
   def install_devise
     view_path = "app/views/"
 
@@ -55,11 +67,11 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
       ", :after => "protect_from_forgery\n")
     copy_file("lib/custom_failure.rb")
     copy_file("app/controllers/registrations_controller.rb")
-    inject_into_file("config/initializers/devise.rb","
-      config.warden do |manager|
-        manager.failure_app = CustomFailure
-      end
-      ", :after => "Devise.setup do |config|\n")
+    # inject_into_file("config/initializers/devise.rb","
+    #   config.warden do |manager|
+    #     manager.failure_app = CustomFailure
+    #   end
+    #   ", :after => "Devise.setup do |config|\n")
     inject_into_file("config/application.rb",' #{config.root}/lib', :after => '#{config.root}/app/modules')
 
     # Use my register controller
@@ -97,6 +109,10 @@ class BeautifulDevisecancanGenerator < Rails::Generators::Base
     end
 
     generate("cancan:ability")
+    
+    inside Rails.root do
+      run "rake db:migrate"
+    end
 
     inject_into_file("app/models/ability.rb", "
       if not user.nil? then
